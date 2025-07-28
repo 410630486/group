@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存貨管理系統</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- 自定義 CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-box-seam me-2"></i>存貨管理系統
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#dashboard">
+                            <i class="bi bi-speedometer2 me-1"></i>儀表板
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inventory">
+                            <i class="bi bi-archive me-1"></i>庫存管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">
+                            <i class="bi bi-box me-1"></i>商品管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reports">
+                            <i class="bi bi-graph-up me-1"></i>報表分析
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>管理員
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>設定</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>登出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容區域 -->
+    <div class="container-fluid main-content">
+        <!-- 儀表板區域 -->
+        <section id="dashboard" class="content-section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="page-title">
+                        <i class="bi bi-speedometer2 me-2"></i>儀表板總覽
+                    </h2>
+                </div>
+            </div>
+
+            <!-- 統計卡片 -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card bg-primary">
+                        <div class="stat-content">
+                            <div class="stat-icon">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>1,245</h3>
+                                <p>總商品數量</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card bg-success">
+                        <div class="stat-content">
+                            <div class="stat-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>967</h3>
+                                <p>庫存充足</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card bg-warning">
+                        <div class="stat-content">
+                            <div class="stat-icon">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>43</h3>
+                                <p>庫存不足</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card bg-danger">
+                        <div class="stat-content">
+                            <div class="stat-icon">
+                                <i class="bi bi-x-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>12</h3>
+                                <p>缺貨商品</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快速操作和最近活動 -->
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-lightning me-2"></i>快速操作
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-primary w-100 quick-action-btn">
+                                        <i class="bi bi-plus-circle d-block fs-3 mb-2"></i>
+                                        新增商品
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-success w-100 quick-action-btn">
+                                        <i class="bi bi-arrow-up-circle d-block fs-3 mb-2"></i>
+                                        入庫作業
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-warning w-100 quick-action-btn">
+                                        <i class="bi bi-arrow-down-circle d-block fs-3 mb-2"></i>
+                                        出庫作業
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-info w-100 quick-action-btn">
+                                        <i class="bi bi-file-earmark-text d-block fs-3 mb-2"></i>
+                                        庫存報表
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-clock-history me-2"></i>最近活動
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-item">
+                                <div class="activity-icon bg-success">
+                                    <i class="bi bi-arrow-up"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="mb-1"><strong>商品入庫</strong></p>
+                                    <p class="text-muted small mb-0">iPhone 14 Pro 入庫 50 台</p>
+                                    <small class="text-muted">2 分鐘前</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon bg-warning">
+                                    <i class="bi bi-arrow-down"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="mb-1"><strong>商品出庫</strong></p>
+                                    <p class="text-muted small mb-0">MacBook Air 出庫 3 台</p>
+                                    <small class="text-muted">15 分鐘前</small>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon bg-info">
+                                    <i class="bi bi-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="mb-1"><strong>新增商品</strong></p>
+                                    <p class="text-muted small mb-0">新增商品：iPad Pro 12.9"</p>
+                                    <small class="text-muted">1 小時前</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 庫存管理區域 -->
+        <section id="inventory" class="content-section d-none">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="page-title">
+                        <i class="bi bi-archive me-2"></i>庫存管理
+                    </h2>
+                </div>
+            </div>
+
+            <!-- 搜尋和篩選 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row align-items-end">
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <label class="form-label">搜尋商品</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="請輸入商品名稱或代碼">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 mb-3">
+                            <label class="form-label">商品類別</label>
+                            <select class="form-select">
+                                <option>全部類別</option>
+                                <option>電子產品</option>
+                                <option>服飾配件</option>
+                                <option>家具用品</option>
+                                <option>食品飲料</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6 mb-3">
+                            <label class="form-label">庫存狀態</label>
+                            <select class="form-select">
+                                <option>全部狀態</option>
+                                <option>庫存充足</option>
+                                <option>庫存不足</option>
+                                <option>缺貨</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6 mb-3">
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-funnel me-1"></i>篩選
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-12 mb-3">
+                            <div class="btn-group w-100" role="group">
+                                <button class="btn btn-success">
+                                    <i class="bi bi-plus me-1"></i>新增商品
+                                </button>
+                                <button class="btn btn-info">
+                                    <i class="bi bi-download me-1"></i>匯出
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 庫存列表 -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>商品代碼</th>
+                                    <th>商品名稱</th>
+                                    <th>類別</th>
+                                    <th>目前庫存</th>
+                                    <th>安全庫存</th>
+                                    <th>單價</th>
+                                    <th>狀態</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>PRD001</code></td>
+                                    <td>iPhone 14 Pro</td>
+                                    <td>電子產品</td>
+                                    <td><span class="badge bg-success">125</span></td>
+                                    <td>50</td>
+                                    <td>NT$ 36,900</td>
+                                    <td><span class="badge bg-success">庫存充足</span></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-outline-primary" title="編輯">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success" title="入庫">
+                                                <i class="bi bi-arrow-up"></i>
+                                            </button>
+                                            <button class="btn btn-outline-warning" title="出庫">
+                                                <i class="bi bi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>PRD002</code></td>
+                                    <td>MacBook Air M2</td>
+                                    <td>電子產品</td>
+                                    <td><span class="badge bg-warning">15</span></td>
+                                    <td>20</td>
+                                    <td>NT$ 37,900</td>
+                                    <td><span class="badge bg-warning">庫存不足</span></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-outline-primary" title="編輯">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success" title="入庫">
+                                                <i class="bi bi-arrow-up"></i>
+                                            </button>
+                                            <button class="btn btn-outline-warning" title="出庫">
+                                                <i class="bi bi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>PRD003</code></td>
+                                    <td>AirPods Pro</td>
+                                    <td>電子產品</td>
+                                    <td><span class="badge bg-danger">0</span></td>
+                                    <td>30</td>
+                                    <td>NT$ 7,490</td>
+                                    <td><span class="badge bg-danger">缺貨</span></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-outline-primary" title="編輯">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success" title="入庫">
+                                                <i class="bi bi-arrow-up"></i>
+                                            </button>
+                                            <button class="btn btn-outline-warning" title="出庫" disabled>
+                                                <i class="bi bi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- 分頁 -->
+                    <nav class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">上一頁</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">下一頁</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 新增商品 Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-plus-circle me-2"></i>新增商品
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">商品代碼 *</label>
+                                <input type="text" class="form-control" placeholder="請輸入商品代碼">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">商品名稱 *</label>
+                                <input type="text" class="form-control" placeholder="請輸入商品名稱">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">商品類別 *</label>
+                                <select class="form-select">
+                                    <option>請選擇類別</option>
+                                    <option>電子產品</option>
+                                    <option>服飾配件</option>
+                                    <option>家具用品</option>
+                                    <option>食品飲料</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">單價 *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">NT$</span>
+                                    <input type="number" class="form-control" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">初始庫存</label>
+                                <input type="number" class="form-control" placeholder="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">安全庫存</label>
+                                <input type="number" class="form-control" placeholder="0">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">商品描述</label>
+                                <textarea class="form-control" rows="3" placeholder="請輸入商品描述"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-check me-1"></i>確認新增
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 自定義 JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
